@@ -46,13 +46,13 @@ class ProductsController < ApplicationController
   # Search by name
   def search
     if params[:name].present?
-        products = Product.search(params[:name]).paged(page: params[:page], per_page: params[:per_page])
-        render json: {
-            data: ActiveModel::SerializableResource.new(products, each_serialize: ProductSerializer),
-            meta: meta_data(products)
-        }
+      products = Product.search(params[:name]).paged(page: params[:page], per_page: params[:per_page])
+      render json: {
+        data: ActiveModel::SerializableResource.new(products, each_serialize: ProductSerializer),
+        meta: meta_data(products)
+      }
     else
-        render json: {}
+      render json: {}
     end
   end
 

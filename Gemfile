@@ -28,11 +28,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'active_model_serializers'
 gem 'devise'
+gem 'factory_bot_rails'
 gem 'kaminari'
 gem 'kaminari-api-meta-data', require: 'kaminari_api_meta_data'
 gem 'rspec-rails'
 gem 'rubocop'
-gem 'factory_bot_rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
