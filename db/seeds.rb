@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -12,6 +14,7 @@
 burgers = Category.find_or_create_by(name: 'Burgery', seq: 1)
 dishes = Category.find_or_create_by(name: 'Dania barowe', seq: 2)
 addons = Category.find_or_create_by(name: 'Dodatki', seq: 3)
+others = Category.find_or_create_by(name: 'Inne', seq: 4)
 
 # Create products
 
@@ -42,3 +45,10 @@ Product.find_or_create_by(name: 'Musztarda', category_id: addons.id, description
 Product.find_or_create_by(name: 'Sos czosnkowy', category_id: addons.id, description: 'Dodaj sos czosnkowy',
                           price: 1.50)
 Product.find_or_create_by(name: 'Cebulka', category_id: addons.id, description: 'Dodatkowa porcja cebulki', price: 1.00)
+
+# Losowe produkty (losowe seedy)
+
+20.times do
+  Product.find_or_create_by(name: Faker::Food.dish, category_id: others.id, description: Faker::Food.description,
+                            price: rand(1..40))
+end

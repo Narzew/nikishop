@@ -6,7 +6,28 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[update destroy]
 
   def index
-    products = Product.paged(page: params[:page], per_page: params[:per_page])
+    # Filter products
+    products = Product
+    # Filter by category
+    products = products.filter_category(params[:category_id]) if params[:category_id].present?
+
+    # Filter by price
+    if params[:price].present?
+      products = if params[:price].include?('<=')
+                   products.filter_price_lower_equal(params[:price].gsub('<=', '').to_i)
+                 elsif params[:price].include?('>=')
+                   products.filter_price_greater_equal(params[:price].gsub('>=', '').to_i)
+                 elsif params[:price].include?('<')
+                   products.filter_price_lower(params[:price].gsub('<', '').to_i)
+                 elsif params[:price].include?('>')
+                   products.filteR_price_greater(params[:price].gsub('>', '').to_i)
+                 else
+                   products.filter_price_exact(params[:price].to_i)
+                 end
+    end
+
+    # Page products
+    products = products.paged(page: params[:page], per_page: params[:per_page])
     render json: {
       data: ActiveModel::SerializableResource.new(products, each_serialize: ProductSerializer),
       meta: meta_data(products)
