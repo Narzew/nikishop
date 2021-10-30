@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   # == Constants ============================================================
   DEFAULT_PAGE = 1
-  DEFAULT_PER_PAGE = 24
+  DEFAULT_PER_PAGE = 3
 
   # == Attributes ===========================================================
 
