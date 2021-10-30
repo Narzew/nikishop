@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
@@ -10,14 +12,14 @@ RSpec.describe Product, type: :model do
   # == Relationships ========================================================
   describe 'relationships' do
     it { is_expected.to belong_to(:category) }
-  end  
+  end
 
   # == Validations ==========================================================
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:category) }
     it { should validate_numericality_of(:price) }
-  end  
+  end
 
   # == Scopes ===============================================================
 
