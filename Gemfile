@@ -26,12 +26,12 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'active_model_serializers'
 gem 'devise'
 gem 'kaminari'
-gem "kaminari-api-meta-data", require: "kaminari_api_meta_data"
+gem 'kaminari-api-meta-data', require: 'kaminari_api_meta_data'
 gem 'rspec-rails'
 gem 'rubocop'
-gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
