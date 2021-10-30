@@ -30,7 +30,7 @@ RSpec.describe Product, type: :model do
   # == Class Methods ========================================================
 
   let!(:category) { create(:category, name: 'Jedzenie') }
-  let!(:second_category) { create(:category, name: 'Gotowe dania')}
+  let!(:second_category) { create(:category, name: 'Gotowe dania') }
   let!(:first_product) { create(:product, name: 'Mleko', category: category, price: 4) }
   let!(:second_product) { create(:product, name: 'Pieczywo', category: category, price: 5) }
   let!(:third_product) { create(:product, name: 'Pieczarki', category: category, price: 10) }

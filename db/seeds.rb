@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'faker'
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -48,5 +49,6 @@ Product.find_or_create_by(name: 'Cebulka', category_id: addons.id, description: 
 # Losowe produkty (losower seedy)
 
 20.times do
-    Product.find_or_create_by(name: Faker::Food.dish, category_id: others.id, description: Faker::Food.description, price: rand(1..40))
+  Product.find_or_create_by(name: Faker::Food.dish, category_id: others.id, description: Faker::Food.description,
+                            price: rand(1..40))
 end
