@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 gem 'kaminari-api-meta-data'
 gem 'devise'
+gem 'rspec-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
