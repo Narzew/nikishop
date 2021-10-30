@@ -46,7 +46,7 @@ Product.find_or_create_by(name: 'Sos czosnkowy', category_id: addons.id, descrip
                           price: 1.50)
 Product.find_or_create_by(name: 'Cebulka', category_id: addons.id, description: 'Dodatkowa porcja cebulki', price: 1.00)
 
-# Losowe produkty (losower seedy)
+# Losowe produkty (losowe seedy)
 
 20.times do
   Product.find_or_create_by(name: Faker::Food.dish, category_id: others.id, description: Faker::Food.description,
