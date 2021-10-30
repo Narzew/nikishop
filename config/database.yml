@@ -23,6 +23,8 @@ default: &default
 
 development:
   <<: *default
+  username: niki
+  password: hacker1234
   database: nikishop_development
 
   # The specified database role being used to connect to postgres.
