@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 gem 'kaminari-api-meta-data'
 gem 'devise'
+gem 'rspec-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -56,7 +57,7 @@ group :test do
   gem 'rspec'
   gem 'faker'
   gem 'factory_bot'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
