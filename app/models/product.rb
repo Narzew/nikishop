@@ -3,7 +3,7 @@
 class Product < ApplicationRecord
   # == Constants ============================================================
   DEFAULT_PAGE = 1
-  DEFAULT_PER_PAGE = 3
+  DEFAULT_PER_PAGE = 5
 
   # == Attributes ===========================================================
 
