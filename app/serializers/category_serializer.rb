@@ -2,10 +2,11 @@
 
 class CategorySerializer < ActiveModel::Serializer
   attributes :id, :name, :seq
-  UNKNOWN_VALUE = "".freeze
+  UNKNOWN_VALUE = ''
 
   def name
     return UNKNOWN_VALUE unless object.name
+
     object.name
   end
 
