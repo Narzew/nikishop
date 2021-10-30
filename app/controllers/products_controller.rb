@@ -13,17 +13,17 @@ class ProductsController < ApplicationController
 
     # Filter by price
     if params[:price].present?
-        if params[:price].include?("<=")
-            products = products.filter_price_lower_equal(params[:price].gsub("<=","").to_i)
-        elsif params[:price].include?(">=")
-            products = products.filter_price_greater_equal(params[:price].gsub(">=","").to_i)
-        elsif params[:price].include?("<")
-            products = products.filter_price_lower(params[:price].gsub("<","").to_i)
-        elsif params[:price].include?(">")
-            products = products.filteR_price_greater(params[:price].gsub(">","").to_i)
-        else
-            products = products.filter_price_exact(params[:price].to_i)
-        end
+      products = if params[:price].include?('<=')
+                   products.filter_price_lower_equal(params[:price].gsub('<=', '').to_i)
+                 elsif params[:price].include?('>=')
+                   products.filter_price_greater_equal(params[:price].gsub('>=', '').to_i)
+                 elsif params[:price].include?('<')
+                   products.filter_price_lower(params[:price].gsub('<', '').to_i)
+                 elsif params[:price].include?('>')
+                   products.filteR_price_greater(params[:price].gsub('>', '').to_i)
+                 else
+                   products.filter_price_exact(params[:price].to_i)
+                 end
     end
 
     # Page products
