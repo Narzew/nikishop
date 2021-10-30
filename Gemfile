@@ -32,6 +32,7 @@ gem 'kaminari'
 gem 'kaminari-api-meta-data', require: 'kaminari_api_meta_data'
 gem 'rspec-rails'
 gem 'rubocop'
+gem 'factory_bot_rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -57,7 +58,6 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'factory_bot'
   gem 'faker'
   gem 'rspec'
   gem 'shoulda-matchers', '~> 5.0'
