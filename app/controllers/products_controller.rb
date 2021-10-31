@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   include ::KaminariApiMetaData
 
   before_action :set_product, only: %i[update destroy]
+  before_action :initialize_session
 
   def index
     # Filter products
@@ -77,7 +78,65 @@ class ProductsController < ApplicationController
     end
   end
 
+  # Add item to cart
+  def add_to_cart
+    product_id = params[:id].to_i
+    session[:cart] << product_id
+    render json: {
+      status: "Item added to cart"
+    }, status: 200
+  end
+
+  # Delete item from cart
+  def remove_from_cart
+    item_id = params[:id].to_i
+    if session[:cart].include?(item_id)
+      # Delete only one occurence of item in cart
+      session[:cart].delete_at(session[:cart].index(item_id))
+      render json: {
+        status: "Item deleted from cart"
+      }, status: 200
+    else
+      render json: {
+        status: "Item wasn't in cart"
+      }, status: 202
+    end
+  end
+
+  # Show cart
+  def show_cart
+    @products = Product.where(:id => session[:cart].uniq)
+    @sum = 0
+    @result_array = session[:cart].tally.map do |product_id, quantity|
+      current_product = @products.find(product_id)
+      @sum += current_product['price']*quantity
+      {
+        name: current_product['name'],
+        price: current_product['price'],
+        quantity: quantity,
+        total: current_product['price']*quantity
+       }
+    end
+    render json: {
+        status: "OK",
+        sum: @sum,
+        cart: @result_array.as_json
+      }, status: 200
+  end
+
+  def finalize_transaction
+    session[:cart] = []
+    render json: {
+        status: "OK",
+      }, status: 200
+  end
+
   private
+
+  def initialize_session
+    # Initialize new cart if it was previously empty
+    session[:cart] ||= []
+  end
 
   def product_params
     params.require(:product).permit(

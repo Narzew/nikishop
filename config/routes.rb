@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get :search
+      get :show_cart
+      get :finalize_transaction
+    end
+    member do
+      get :add_to_cart
+      get :remove_from_cart
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
