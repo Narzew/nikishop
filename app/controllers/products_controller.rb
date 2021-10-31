@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
     product_id = params[:id].to_i
     session[:cart] << product_id
     render json: {
-      status: "Item added to cart"
+      status: 'Item added to cart'
     }, status: 200
   end
 
@@ -94,7 +94,7 @@ class ProductsController < ApplicationController
       # Delete only one occurence of item in cart
       session[:cart].delete_at(session[:cart].index(item_id))
       render json: {
-        status: "Item deleted from cart"
+        status: 'Item deleted from cart'
       }, status: 200
     else
       render json: {
@@ -105,30 +105,30 @@ class ProductsController < ApplicationController
 
   # Show cart
   def show_cart
-    @products = Product.where(:id => session[:cart].uniq)
+    @products = Product.where(id: session[:cart].uniq)
     @sum = 0
     @result_array = session[:cart].tally.map do |product_id, quantity|
       current_product = @products.find(product_id)
-      @sum += current_product['price']*quantity
+      @sum += current_product['price'] * quantity
       {
         name: current_product['name'],
         price: current_product['price'],
         quantity: quantity,
-        total: current_product['price']*quantity
-       }
+        total: current_product['price'] * quantity
+      }
     end
     render json: {
-        status: "OK",
-        sum: @sum,
-        cart: @result_array.as_json
-      }, status: 200
+      status: 'OK',
+      sum: @sum,
+      cart: @result_array.as_json
+    }, status: 200
   end
 
   def finalize_transaction
     session[:cart] = []
     render json: {
-        status: "OK",
-      }, status: 200
+      status: 'OK'
+    }, status: 200
   end
 
   private
