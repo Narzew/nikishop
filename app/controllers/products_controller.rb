@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
                  elsif params[:price].include?('<')
                    products.filter_price_lower(params[:price].gsub('<', '').to_i)
                  elsif params[:price].include?('>')
-                   products.filteR_price_greater(params[:price].gsub('>', '').to_i)
+                   products.filter_price_greater(params[:price].gsub('>', '').to_i)
                  else
                    products.filter_price_exact(params[:price].to_i)
                  end
